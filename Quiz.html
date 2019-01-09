@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+    Next Step:
+    - make input form and push to array, but won't save .... 
+-->
+
+<HEAD>
+
+    <style>
+        .box1 {
+
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid blue;
+            background-color: rgba(199, 215, 231, 0.836);
+
+        }
+
+        .box0 {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid blue;
+            background-color: rgba(69, 102, 134, 0.5);
+
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .button {
+            background-color: rgb(186, 192, 229);
+            /* Green */
+            border: none;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 4px 2px;
+            border-radius: 8px;
+            width: 75px;
+            height: 55px;
+            height: 55px;
+            cursor: pointer;
+        }
+    </style>
+</HEAD>
+<SCRIPT>
+    // let user = new Object(); // "object constructor" syntax
+    // let user = {};  // "object literal" syntax
+
+    let qNum = 0;
+    let qCount = 0;
+
+    QnA = [{
+            question: "Does css \"display: inline-block\" add a line-break after the element",
+            answer: "No. It does not add a line-break after the element, so the element can sit next to other elements.",
+            link: "https://www.w3schools.com/css/css_inline-block.asp",
+            hint: ["yes", "no", "depends"]
+        },
+        {
+            question: "What is the default method for sorting an array?",
+            answer: ".sort()",
+            link: "https://www.w3schools.com/js/js_array_sort.asp",
+            hint: [".sort[]", ".sort()", ".arraySort()", ".sortAll()"]
+        },
+        {
+            question: "Does the sort() method sort values as strings?",
+            answer: "yes; and could be a problem with numbers!",
+            link: "https://www.w3schools.com/js/js_array_sort.asp",
+            hint: ["yes", "no", "depends"]
+        },
+        {
+            question: "How do you \"fix\" the sort() method sort order issue with numbers?",
+            answer: "The Compare Function; The purpose of the compare function is to define an alternative sort order.",
+            link: "https://www.w3schools.com/js/js_array_sort.asp",
+            hint: ["CompareSort Function", "SortDiff Function", "Compare Function"]
+        },
+        {
+            question: "What are Template literals enclosed by?",
+            answer: "back=tick",
+            link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals",
+            hint: ["single-quote", "double-quote", "back-ticks", "tilde"]
+        },
+        {
+            question: "blank",
+            answer: "answer",
+            link: "#",
+            hint: ["a", "b", "c"]
+        }
+    ]
+</SCRIPT>
+
+<body>
+    <div class="box0">
+        <h2>Kaiser Permanente Set-up</h2>
+
+        <p style="background-color:powderblue;">Click the button for a question.</p>
+
+        <Div class="flex-container">
+        <button class="button" id="b1" onclick="getAQuestion()">Get a question</button>
+        <button class="button" id="btnHint" onclick="getAHint()">Get a Hint</button>
+        <button class="button" id="btnHint" onclick="getAnswer()">Get Answer</button>
+        </Div>
+
+        <Div class="flex-container">
+            <Div class="box1" id="box12">Question: #1
+                <p id="demo">--------------</p>
+            </Div>
+            <Div class="box1">Hint:
+                <p id="demoHint">--------------</p>
+            </Div>
+            <Div class="box1">Answer:
+                <p id="demoAns">--------------</p>
+                <div id="linkAns"><a href="#">More...</a></div>
+            </Div>
+        </Div>
+    </div>
+
+    <SCRIPT>
+        function getAQuestion() {
+
+            document.getElementById("demoHint").innerHTML = "--------------";
+            document.getElementById("demoAns").innerHTML = "--------------";
+            document.getElementById("linkAns").innerHTML = "<a href='#'>More...</a>";
+
+            //this is annoying .. why do I need to put the whole html? I just want the # to change
+            document.getElementById("box12").innerHTML =
+                "Question: #" + (qNum + 1).toString() + "<p id='demo'>--------------</p>";
+
+            document.getElementById("demo").innerHTML = QnA[qNum].question;
+
+            //console.log("length " + QnA.length + "; qNum = " + qNum);
+
+            if (qNum === QnA.length - 1) {
+                qNum = 0
+                document.getElementById("b1").innerHTML = "Start over";
+
+            } else {
+                // qNum = qNum + 1
+                qNum++
+                document.getElementById("b1").innerHTML = "Next";
+            }
+        }
+
+        
+
+        function getAHint() {
+            
+            let qNum2
+            //console.log("length " + QnA.length + "; qNum = " + qNum);
+            if (qNum == 0){
+                    qNum2 = QnA.length - 1
+                } else {
+                    qNum2 = qNum - 1
+                            };
+            // start building the hintItem html that will look like a list
+            let hintItem = "<ul>"
+
+            QnA[qNum2].hint.forEach(function (item, index, arrayObj) {
+                //console.log(item);
+                hintItem += '<li>' + item + '</li>';
+                            });
+            
+            hintItem += "</ul>"
+                            
+            document.getElementById("demoHint").innerHTML = hintItem;
+        }
+
+
+        function getAnswer() {
+
+            let qNum3
+            console.log("length " + QnA.length + "; qNum = " + qNum);
+            if (qNum == 0){
+                    qNum3 = QnA.length - 1
+                } else {
+                    qNum3 = qNum - 1
+                            };
+
+                            console.log("qNum3 = " , qNum3)
+
+            // start building the Answer html that will look like a list
+            let ansItem = '<ul><li>' + QnA[qNum3].answer + '</li></ul>';
+            document.getElementById("demoAns").innerHTML = ansItem;
+
+            let ansLink = QnA[qNum3].link
+            document.getElementById("linkAns").innerHTML = "<a href='" + ansLink + "' target=\"_blank\">More...</a>";
+            // question: can I push directly to href? or do I need the whole html like above?
+        }
+
+    </SCRIPT>
+
+</body>
+<Footer>
+        <!-- <a href="https://www.w3schools.com/" target="_blank">Visit W3Schools!</a> -->
+</Footer>
+
+</html>
