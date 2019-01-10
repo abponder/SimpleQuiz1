@@ -10,12 +10,13 @@
     <style>
         .box1 {
 
-            width: 200px;
+            width: 210px;
             height: 200px;
             margin: 10px;
             padding: 10px;
             border: 1px solid blue;
             background-color: rgba(199, 215, 231, 0.836);
+            overflow: auto;
 
         }
 
@@ -87,6 +88,60 @@
             answer: "back=tick",
             link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals",
             hint: ["single-quote", "double-quote", "back-ticks", "tilde"]
+        },
+        {
+            question: "What operator can transform a string into an array?",
+            answer: "Spread Operator in ES6",
+            link: "https://scotch.io/bar-talk/javascripts-three-dots-spread-vs-rest-operators543",
+            hint: ["rest", "+=%", "spread"]
+        },
+        {
+            question: "What is the code for spreading var d = 'abcdefg' ?",
+            answer: "[...d]",
+            link: "https://javascript.info/rest-parameters-spread-operator",
+            hint: ["[d...]", "d.spread()", "[...d]"]
+        },
+        {
+            question: "Using the spread operator, copy const arr = [1, 2, 3] into a new array arr2",
+            answer: "const arr2 = [...arr];",
+            link: "https://scotch.io/bar-talk/javascripts-three-dots-spread-vs-rest-operators543",
+            hint: ["const arr2 =+ arr", "const arr2 = [...arr]", "const arr2 = [arr2, ...arr]"]
+        },
+        {
+            question: "How can one pass array elements to a function as separate arguments?\nfunction add(a, b, c)\n{ return a + b + c;} ",
+            answer: "add(...args);",
+            link: "https://scotch.io/bar-talk/javascripts-three-dots-spread-vs-rest-operators543",
+            hint: ["add(...args)", "add(1, 2, 3)", "add(1, 2, 3...)"]
+        },
+        {
+            question: "to add or remove an item at the end of an array we can use ----() and --() respectively.",
+            answer: "myArray.push('Cardiff') and myArray.pop()",
+            link: "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Arrays",
+            hint: ["shove", "goes the weazel", "...sicle"]
+        },
+        {
+            question: "to add or remove an item at the beginning of an array we can use ----() and --() respectively.",
+            answer: "myArray.unshift('Edinburgh') and myArray.shift()",
+            link: "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Arrays",
+            hint: ["unPop", "shifty", "unShove"]
+        },
+        {
+            question: "What is the simple loop code to console the items in an array? eg:var sequence = [1, 1, 2, 3, 5, 8, 13];",
+            answer: "for (var i = 0; i < sequence.length; i++) {console.log(sequence[i]);}",
+            link: "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Arrays",
+            hint: ["var i = 0;", "{console.log(sequence[i]);}", "i < sequence.length; i++"]
+        },
+        {
+            question: "What is the ES6 loop code to console the items in an array? eg:var fruit = ['apple', 'pear', 'grape', 'peach'];",
+            answer: "fruit.forEach((element, index) => {console.log(element);});",
+            link: "https://gomakethings.com/es6-foreach-loops-with-vanilla-javascript/",
+            hint: ["fruit.for","fruit.ES","fruit.Each"]
+        },
+        {
+            question: "What the difference between a NodeList and an array list? ",
+            answer: "The key way to think about NodeLists vs. Arrays: NodeLists are a language-agnostic way to access DOM elements, and Arrays are a JavaScript object you can use to contain collections of stuff. They each have their own methods and properties, and you can convert a NodeList into an Array if you need to (but not the other way around).",
+            link: "https://gomakethings.com/nodelists-vs-arrays/",
+            hint: ["a", "b", "c"]
         },
         {
             question: "blank",
